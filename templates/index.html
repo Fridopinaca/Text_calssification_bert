@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BERT Flask App</title>
+</head>
+<body>
+    <h1>BERT Flask App</h1>
+    <form action="/predict" method="post">
+        <label for="text_to_predict">Enter text to predict:</label>
+        <textarea id="text_to_predict" name="text_to_predict" rows="4" cols="50"></textarea><br>
+        <input type="submit" value="Predict">
+    </form>
+    {% if text %}
+        <h2>Input Text:</h2>
+        <p>{{ text }}</p>
+        <h2>Predicted Label:</h2>
+        <p>{{ predicted_label }}</p>
+        <h2>Probabilities:</h2>
+        <ul>
+            {% for prob in probabilities %}
+                <li>{{ loop.index0 }}: {{ prob }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
+
